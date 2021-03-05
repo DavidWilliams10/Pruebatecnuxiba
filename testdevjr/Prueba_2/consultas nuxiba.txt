@@ -1,0 +1,18 @@
+Creación de base de datos:
+CREATE DATABASE nuxiba;
+Use nuxiba;
+
+Creación de Tablas
+CREATE TABLE logDial ( idLlamada VARCHAR(20), fechaDeLlamada datetime, tiempoDialogo smallint, telefono varchar(10), tipoDeLlamada varchar(15));
+CREATE TABLE costos (tipoDeLlamada varchar(15), costo decimal(10,4));
+
+Que muestre los registros con tipo de llamada Cel LD durante el mes febrero
+SELECT * FROM logDial WHERE fechaDeLlamada >= '20200201' and fechaDeLlamada <= '20200229' and tipoDeLlamada = 'Cel LD';
+
+Que indique el promedio de tiempo de dialogo de las llamadas con tipo Cel LD durante el mes de febrero
+SELECT AVG(tiempoDialogo) FROM di WHERE fechaDeLlamada >= '20200201' and fechaDeLlamada <= '20200229' and tipoDeLlamada = 'Cel LD';
+
+Que muestre el número en minutos de dialogo (tomando tiempoDialogo que está en segundos) y el costo de todas las llamadas del mes de enero
+SELECT SUM(tiempoDialogo)/60.00 AS minutosDeDialogo FROM di WHERE fechaDeLlamada >= '20200101' and fechaDeLlamada <= '20200131';
+SELECT COUNT(tipoDeLlamada) as Total FROM di WHERE fechaDeLlamada >= '20200101' and fechaDeLlamada <= '20200131' and tipoDeLlamada = 'Cel';
+
